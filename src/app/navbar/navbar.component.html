@@ -1,0 +1,18 @@
+<div class="w-100 text-center">
+  <!--Creo el grupo de botones con el target event binding click y el metodo relacionado con el evento.
+    Cada boton llama a su rspectiva constante creada en navbar.component.ts para cargar los distintos modelos-->
+  <div class="btn-group p-3 m-auto" role="group" aria-label="Car options">
+    <button type="button" class="btn btn-danger" (click)="loadModel(car)">
+      Compact
+    </button>
+    <button type="button" class="btn btn-info" (click)="loadModel(sedan)">
+      Sedan
+    </button>
+    <button type="button" class="btn btn-warning" (click)="loadModel(taxi)">
+      Taxi
+    </button>
+    <!-- <button type="button" class="btn btn-success" (click)="loadModel(taxi)">
+    Cargar archivo GLTF - en construcción
+  </button> -->
+  </div>
+</div>
