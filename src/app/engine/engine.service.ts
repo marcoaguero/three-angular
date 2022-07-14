@@ -81,6 +81,7 @@ export class EngineService implements OnDestroy {
       this.scene.add(this.model);
     });
   }
+  //creo un segundo metodo para cargar archivos desde navbar.component.ts
   public loadModelUrl(file: any): void {
     if (this.scene.children[4]) {
       this.scene.remove(this.scene.children[4]);

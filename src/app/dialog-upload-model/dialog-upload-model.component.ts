@@ -20,7 +20,6 @@ export class DialogUploadModelComponent implements OnInit {
 
   ngOnInit(): void {
     this.assetForm = this.fb.group({
-      name: [null, Validators.required],
       file: [null, Validators.required],
     });
   }
