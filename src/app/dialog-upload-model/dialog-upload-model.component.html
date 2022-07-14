@@ -1,0 +1,8 @@
+<form [formGroup]="assetForm">
+  <div>
+    Upload model:
+    <input formControlName="file" type="file" name="file" />
+
+    <button (click)="sendAssetForm()">Upload file</button>
+  </div>
+</form>

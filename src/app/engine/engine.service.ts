@@ -5,6 +5,7 @@ import { GLTFLoader, GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 //para agregar el control de la camara con el raton o controles touch, importo OrbitControls
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Scene } from 'three';
+import { R3BoundTarget } from '@angular/compiler';
 
 @Injectable({ providedIn: 'root' })
 export class EngineService implements OnDestroy {
@@ -80,6 +81,27 @@ export class EngineService implements OnDestroy {
       this.scene.add(this.model);
     });
   }
+  public loadModelUrl(file: any): void {
+    if (this.scene.children[4]) {
+      this.scene.remove(this.scene.children[4]);
+    }
+    const reader = new FileReader();
+    reader.addEventListener(
+      'load',
+      function (event) {
+        const contents = event.target.result;
+
+        const loader = new GLTFLoader();
+        loader.parse(contents, '', function (gltf) {
+          this.model = gltf.scene.children[0];
+          console.log(this.model);
+          this.scene.add(this.model);
+        });
+      },
+      false
+    );
+    reader.readAsArrayBuffer(file);
+  }
   public animate(): void {
     // We have to run this outside angular zones,
     // because it could trigger heavy changeDetection cycles.
@@ -117,4 +139,12 @@ export class EngineService implements OnDestroy {
 
     this.renderer.setSize(width, height);
   }
+}
+function loadGLTF(
+  url: string,
+  arg1: (gltf: any) => void,
+  arg2: () => void,
+  arg3: () => void
+) {
+  throw new Error('Function not implemented.');
 }
